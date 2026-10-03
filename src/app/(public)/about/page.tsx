@@ -45,13 +45,33 @@ export default async function AboutPage() {
           {/* Avatar Profile Plate */}
           <div className="md:col-span-4 space-y-4">
             <div className="relative aspect-square w-full rounded-lg border border-border bg-secondary/30 overflow-hidden pin-tilted shadow-md">
-              {profile?.avatar ? (
+              {profile?.avatar?.startsWith('/avatar-') ? (
+                <>
+                  <Image
+                    src="/avatar-light.jpg"
+                    alt={profile.name || 'Elvien'}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 280px"
+                    className="object-cover dark:hidden"
+                    priority
+                  />
+                  <Image
+                    src="/avatar-dark.jpg"
+                    alt={profile.name || 'Elvien'}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 280px"
+                    className="object-cover hidden dark:block"
+                    priority
+                  />
+                </>
+              ) : profile?.avatar ? (
                 <Image
                   src={profile.avatar}
                   alt={profile.name || 'Elvien'}
                   fill
                   sizes="(max-width: 768px) 100vw, 280px"
                   className="object-cover"
+                  priority
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center font-mono text-xs text-muted-foreground">
