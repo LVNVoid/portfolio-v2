@@ -1,4 +1,7 @@
+'use client';
+
 import * as React from 'react';
+import { motion } from 'framer-motion';
 import { Server, Database, Globe } from 'lucide-react';
 
 interface ArchitectureDiagramProps {
@@ -15,7 +18,11 @@ export function ArchitectureDiagram({
   className = '',
 }: ArchitectureDiagramProps) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className={`p-3 rounded border border-border/80 bg-secondary/30 font-mono text-[10px] space-y-2 ${className}`}
     >
       <div className="flex items-center justify-between text-muted-foreground border-b border-border/60 pb-1">
@@ -50,6 +57,6 @@ export function ArchitectureDiagram({
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

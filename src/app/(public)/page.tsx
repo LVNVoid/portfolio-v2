@@ -3,6 +3,7 @@ import { ArrowRight, Terminal } from 'lucide-react';
 import { getProjects } from '@/services/project-service';
 import { VitrineHero } from '@/components/vitrine-hero';
 import { SpecimenCard } from '@/components/specimen-card';
+import { SlideUp } from '@/components/ui/animated';
 
 export default async function HomePage() {
   const allProjects = await getProjects();
@@ -50,44 +51,46 @@ export default async function HomePage() {
       </section>
 
       {/* Engineering Philosophy Box */}
-      <section
-        aria-label="Engineering Approach"
-        className="vitrine-border bg-card rounded-lg p-6 sm:p-8 space-y-4 relative overflow-hidden"
-      >
-        <div className="flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-wider">
-          <Terminal className="w-4 h-4 text-primary" />
-          <span>Engineering Approach</span>
-        </div>
+      <SlideUp delay={0.1}>
+        <section
+          aria-label="Engineering Approach"
+          className="vitrine-border bg-card rounded-lg p-6 sm:p-8 space-y-4 relative overflow-hidden"
+        >
+          <div className="flex items-center gap-2 text-primary font-mono text-xs uppercase tracking-wider">
+            <Terminal className="w-4 h-4 text-primary" />
+            <span>Engineering Approach</span>
+          </div>
 
-        <div className="space-y-2 max-w-3xl">
-          <h3 className="font-serif text-xl sm:text-2xl text-foreground font-normal">
-            "Real production software beats unfinished mockups every time."
-          </h3>
-          <p className="text-xs sm:text-sm text-muted-foreground font-sans leading-relaxed">
-            Every web app in this portfolio is live on the internet. I focus on delivering
-            production-ready systems that handle real database state, secure user logins,
-            automated background jobs, and smooth mobile experiences.
-          </p>
-        </div>
+          <div className="space-y-2 max-w-3xl">
+            <h3 className="font-serif text-xl sm:text-2xl text-foreground font-normal">
+              "Real production software beats unfinished mockups every time."
+            </h3>
+            <p className="text-xs sm:text-sm text-muted-foreground font-sans leading-relaxed">
+              Every web app in this portfolio is live on the internet. I focus on delivering
+              production-ready systems that handle real database state, secure user logins,
+              automated background jobs, and smooth mobile experiences.
+            </p>
+          </div>
 
-        <div className="pt-2 flex flex-wrap items-center gap-4">
-          <Link
-            href="/about"
-            className="px-4 py-2 min-h-[44px] rounded border border-border bg-secondary/50 text-foreground font-mono text-xs uppercase tracking-wider hover:bg-secondary transition-colors inline-flex items-center gap-2"
-          >
-            <span>About Me</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+          <div className="pt-2 flex flex-wrap items-center gap-4">
+            <Link
+              href="/about"
+              className="px-4 py-2 min-h-[44px] rounded border border-border bg-secondary/50 text-foreground font-mono text-xs uppercase tracking-wider hover:bg-secondary transition-colors inline-flex items-center gap-2 cursor-pointer active:scale-95"
+            >
+              <span>About Me</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
 
-          <Link
-            href="/contact"
-            className="px-4 py-2 min-h-[44px] rounded bg-primary text-primary-foreground font-mono text-xs uppercase tracking-wider font-semibold hover:bg-primary/90 transition-colors inline-flex items-center gap-2"
-          >
-            <span>Get in Touch</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-      </section>
+            <Link
+              href="/contact"
+              className="px-4 py-2 min-h-[44px] rounded bg-primary text-primary-foreground font-mono text-xs uppercase tracking-wider font-semibold hover:bg-primary/90 transition-colors inline-flex items-center gap-2 cursor-pointer active:scale-95"
+            >
+              <span>Get in Touch</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        </section>
+      </SlideUp>
     </div>
   );
 }

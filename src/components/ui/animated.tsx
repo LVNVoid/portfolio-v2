@@ -47,7 +47,7 @@ export function FadeIn({
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
+      viewport={{ once: true, margin: '60px 0px 0px 0px' }}
       transition={{
         duration,
         delay,
@@ -75,9 +75,9 @@ export function SlideUp({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-30px' }}
+      viewport={{ once: true, margin: '60px 0px 0px 0px' }}
       transition={{
         duration,
         delay,

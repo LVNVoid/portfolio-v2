@@ -10,9 +10,25 @@ import { Menu, X } from 'lucide-react';
 export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 15);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/90 backdrop-blur-md transition-colors duration-200">
+    <header
+      className={`sticky top-0 z-40 w-full border-b transition-all duration-300 ${
+        scrolled
+          ? 'border-border bg-background/95 backdrop-blur-md shadow-xs'
+          : 'border-border/60 bg-background/80 backdrop-blur-sm'
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         {/* Profile Branding Header */}
         <Link

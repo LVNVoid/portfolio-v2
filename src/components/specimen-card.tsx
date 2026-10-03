@@ -1,6 +1,9 @@
+'use client';
+
 import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight, Radio } from 'lucide-react';
 import type { Project } from '@/schemas/project-schema';
 import { ArchitectureDiagram } from '@/components/architecture-diagram';
@@ -16,8 +19,14 @@ export function SpecimenCard({ project, featured = false }: SpecimenCardProps) {
   const isLive = project.status === 'LIVE';
 
   return (
-    <article
-      className={`group vitrine-border bg-card rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/60 hover:-translate-y-1 hover:shadow-md active:scale-[0.99] flex flex-col justify-between ${
+    <motion.article
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '80px 0px 0px 0px' }}
+      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -4, transition: { duration: 0.2, ease: 'easeOut' } }}
+      whileTap={{ scale: 0.99 }}
+      className={`group vitrine-border bg-card rounded-lg overflow-hidden transition-colors hover:border-primary/60 flex flex-col justify-between ${
         featured ? 'md:col-span-2' : ''
       }`}
     >
@@ -134,6 +143,6 @@ export function SpecimenCard({ project, featured = false }: SpecimenCardProps) {
           )}
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }
