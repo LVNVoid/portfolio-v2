@@ -6,6 +6,7 @@ import type { Project } from '@/schemas/project-schema';
 import { ArchitectureDiagram } from '@/components/architecture-diagram';
 import { Sparkline } from '@/components/sparkline';
 import { DataTicker } from '@/components/data-ticker';
+import { SkillIcon } from '@/components/skill-icon';
 
 interface VitrineHeroProps {
   featuredProject: Project | null;
@@ -132,9 +133,10 @@ export function VitrineHero({
                 {featuredProject.tech.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2.5 py-1 rounded text-xs font-mono bg-secondary text-foreground border border-border/70"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono bg-secondary text-foreground border border-border/70"
                   >
-                    {tag}
+                    <SkillIcon name={tag} className="w-3.5 h-3.5 shrink-0" />
+                    <span>{tag}</span>
                   </span>
                 ))}
               </div>

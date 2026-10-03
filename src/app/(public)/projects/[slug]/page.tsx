@@ -6,6 +6,7 @@ import { ArrowLeft, ExternalLink, Github, Radio, Calendar } from 'lucide-react';
 import { getProjectBySlug, getProjects } from '@/services/project-service';
 import { ArchitectureDiagram } from '@/components/architecture-diagram';
 import { Sparkline } from '@/components/sparkline';
+import { SkillIcon } from '@/components/skill-icon';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -141,9 +142,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             {project.tech.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 rounded text-xs font-mono bg-secondary text-foreground border border-border"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono bg-secondary text-foreground border border-border shadow-xs hover:border-primary/50 transition-colors"
               >
-                {tag}
+                <SkillIcon name={tag} className="w-3.5 h-3.5 shrink-0" />
+                <span>{tag}</span>
               </span>
             ))}
           </div>

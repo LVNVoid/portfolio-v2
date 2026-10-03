@@ -5,6 +5,7 @@ import { ExternalLink, Github, ArrowRight, Radio } from 'lucide-react';
 import type { Project } from '@/schemas/project-schema';
 import { ArchitectureDiagram } from '@/components/architecture-diagram';
 import { Sparkline } from '@/components/sparkline';
+import { SkillIcon } from '@/components/skill-icon';
 
 interface SpecimenCardProps {
   project: Project;
@@ -86,9 +87,10 @@ export function SpecimenCard({ project, featured = false }: SpecimenCardProps) {
             {project.tech.map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-0.5 rounded text-[11px] font-mono bg-secondary/70 text-foreground border border-border/70 hover:border-primary/40 transition-colors"
+                className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono bg-secondary/70 text-foreground border border-border/70 hover:border-primary/40 transition-colors"
               >
-                {tag}
+                <SkillIcon name={tag} className="w-3 h-3 shrink-0" />
+                <span>{tag}</span>
               </span>
             ))}
           </div>
