@@ -33,7 +33,7 @@ export function Navbar() {
         {/* Desktop Navigation Tabs */}
         <nav
           aria-label="Main Navigation"
-          className="hidden md:flex items-center gap-1.5"
+          className="hidden lg:flex items-center gap-1.5"
         >
           {NAV_ITEMS.map((item) => {
             const isActive =
@@ -63,8 +63,8 @@ export function Navbar() {
           </div>
         </nav>
 
-        {/* Mobile Hamburger & Theme Toggle */}
-        <div className="flex items-center gap-2 md:hidden">
+        {/* Mobile & Tablet Hamburger & Theme Toggle */}
+        <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
           <button
             type="button"
@@ -77,9 +77,9 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer Dropdown */}
+      {/* Mobile & Tablet Drawer Dropdown */}
       {mobileOpen && (
-        <div className="md:hidden border-b border-border bg-card px-4 py-4 space-y-2">
+        <div className="lg:hidden border-b border-border bg-card/95 backdrop-blur-md px-4 py-4 space-y-2 shadow-xl animate-in slide-in-from-top-2 duration-200">
           {NAV_ITEMS.map((item) => {
             const isActive =
               pathname === item.href ||
@@ -90,7 +90,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className={`flex items-center justify-between px-4 py-3 min-h-[44px] rounded border text-xs font-mono uppercase tracking-wider transition-colors ${
+                className={`flex items-center justify-between px-4 py-3 min-h-[44px] rounded-lg border text-xs font-mono uppercase tracking-wider transition-colors ${
                   isActive
                     ? 'border-primary bg-primary text-primary-foreground font-semibold'
                     : 'border-border/60 bg-secondary/30 text-foreground hover:bg-secondary'

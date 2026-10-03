@@ -18,7 +18,7 @@ export function TaxonomyFilter({
   return (
     <div
       aria-label="Filter specimens by taxonomy"
-      className={`flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none ${className}`}
+      className={`flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 scrollbar-none touch-pan-x -mx-4 px-4 sm:mx-0 sm:px-0 ${className}`}
     >
       <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground mr-1 shrink-0">
         Filter Class:

@@ -43,7 +43,7 @@ export function SpecimenCard({ project, featured = false }: SpecimenCardProps) {
         </div>
       </div>
 
-      <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between gap-5">
+      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between gap-4">
         <div>
           {/* Title & Description */}
           <h3 className="font-serif text-xl sm:text-2xl font-normal text-foreground group-hover:text-primary transition-colors">

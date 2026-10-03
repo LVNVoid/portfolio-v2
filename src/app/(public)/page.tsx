@@ -13,7 +13,7 @@ export default async function HomePage() {
   const liveSpecimens = allProjects.filter((p) => p.status === 'LIVE').length;
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-10 sm:space-y-14">
       {/* Featured Project Showcase */}
       <VitrineHero
         featuredProject={featured}
@@ -42,7 +42,7 @@ export default async function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {secondaryProjects.map((project) => (
             <SpecimenCard key={project.id} project={project} />
           ))}
