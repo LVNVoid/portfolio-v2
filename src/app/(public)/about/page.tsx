@@ -38,19 +38,19 @@ export default async function AboutPage() {
       </div>
 
       {/* Main Profile Card */}
-      <div className="vitrine-border bg-card rounded-xl p-6 sm:p-10 space-y-8 relative overflow-hidden">
+      <div className="vitrine-border bg-card rounded-xl p-5 sm:p-8 lg:p-10 space-y-8 relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-primary" />
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Avatar Profile Plate */}
-          <div className="md:col-span-4 lg:col-span-3 space-y-4">
-            <div className="relative aspect-square w-44 sm:w-48 md:w-full max-w-[200px] rounded-lg border border-border bg-secondary/30 overflow-hidden pin-tilted shadow-md">
+          <div className="md:col-span-4 lg:col-span-3 flex flex-row md:flex-col gap-3.5 sm:gap-5 md:gap-4 items-center md:items-start">
+            <div className="relative aspect-square w-20 h-20 sm:w-24 sm:h-24 md:w-full md:h-auto md:max-w-[200px] rounded-lg border border-border bg-secondary/30 overflow-hidden pin-tilted shadow-md shrink-0">
               {profile?.avatar ? (
                 <Image
                   src={profile.avatar.startsWith('/avatar-') ? '/avatar-light.jpg' : profile.avatar}
                   alt={profile.name || 'Elvien'}
                   fill
-                  sizes="(max-width: 768px) 180px, 200px"
+                  sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 200px"
                   className="object-cover"
                   priority
                 />
@@ -61,18 +61,25 @@ export default async function AboutPage() {
               )}
             </div>
 
-            <div className="space-y-1.5 font-mono text-xs">
-              <div className="text-foreground font-semibold text-sm">
+            <div className="space-y-1 sm:space-y-1.5 font-mono text-xs min-w-0 flex-1">
+              <div className="text-foreground font-semibold text-sm sm:text-base leading-tight">
                 {profile?.name || 'Elvien Aninditha Purnawan'}
               </div>
-              <div className="text-primary">{profile?.role || 'Full-Stack Developer'}</div>
-              <div className="flex items-center gap-1.5 text-muted-foreground pt-1">
-                <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
-                <span>{profile?.location || 'Jakarta, Indonesia (WIB / UTC+7)'}</span>
+              <div className="text-primary text-xs leading-tight font-medium">
+                {profile?.role || 'Full-Stack Developer'}
               </div>
-              <div className="flex items-center gap-1.5 text-muted-foreground">
-                <Mail className="w-3.5 h-3.5 text-muted-foreground" />
-                <span>{profile?.email || 'elvien.purnawan13@gmail.com'}</span>
+              <div className="flex items-center gap-1.5 text-muted-foreground pt-0.5 text-[10.5px] sm:text-xs min-w-0">
+                <MapPin className="w-3.5 h-3.5 shrink-0 text-muted-foreground" />
+                <span className="truncate">{profile?.location || 'Jakarta, Indonesia (WIB / UTC+7)'}</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-muted-foreground text-[10.5px] sm:text-xs min-w-0">
+                <Mail className="w-3.5 h-3.5 shrink-0 text-muted-foreground" />
+                <a
+                  href={`mailto:${profile?.email || 'elvien.purnawan13@gmail.com'}`}
+                  className="hover:text-primary transition-colors underline-offset-2 hover:underline truncate"
+                >
+                  {profile?.email || 'elvien.purnawan13@gmail.com'}
+                </a>
               </div>
             </div>
           </div>
