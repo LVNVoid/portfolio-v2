@@ -43,14 +43,14 @@ export default async function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Avatar Profile Plate */}
-          <div className="md:col-span-4 space-y-4">
-            <div className="relative aspect-square w-full rounded-lg border border-border bg-secondary/30 overflow-hidden pin-tilted shadow-md">
+          <div className="md:col-span-4 lg:col-span-3 space-y-4">
+            <div className="relative aspect-square w-44 sm:w-48 md:w-full max-w-[200px] rounded-lg border border-border bg-secondary/30 overflow-hidden pin-tilted shadow-md">
               {profile?.avatar ? (
                 <Image
                   src={profile.avatar.startsWith('/avatar-') ? '/avatar-light.jpg' : profile.avatar}
                   alt={profile.name || 'Elvien'}
                   fill
-                  sizes="(max-width: 768px) 100vw, 280px"
+                  sizes="(max-width: 768px) 180px, 200px"
                   className="object-cover"
                   priority
                 />
@@ -78,7 +78,7 @@ export default async function AboutPage() {
           </div>
 
           {/* Narrative Content */}
-          <div className="md:col-span-8 space-y-6">
+          <div className="md:col-span-8 lg:col-span-9 space-y-6">
             <div className="space-y-3">
               <span className="text-[10px] font-mono uppercase tracking-wider text-primary font-bold">
                 Background & Focus
