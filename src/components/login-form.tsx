@@ -28,7 +28,7 @@ export function LoginForm() {
       });
 
       if (res?.error) {
-        setError('Invalid credentials. Access to cabinet vault restricted.');
+        setError('Invalid email or password. Please try again.');
         setIsLoading(false);
         return;
       }
@@ -36,7 +36,7 @@ export function LoginForm() {
       router.push(from);
       router.refresh();
     } catch {
-      setError('An unexpected authorization error occurred.');
+      setError('An unexpected error occurred during sign in.');
       setIsLoading(false);
     }
   }
@@ -58,7 +58,7 @@ export function LoginForm() {
           htmlFor="email"
           className="block text-xs uppercase tracking-wider font-mono text-muted-foreground"
         >
-          Curator Identifier (Email)
+          Email Address
         </label>
         <div className="relative">
           <input
@@ -69,7 +69,7 @@ export function LoginForm() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="curator@elvien.net"
+            placeholder="admin@elvien.net"
             className="w-full h-11 min-h-[44px] px-3.5 pl-10 rounded border border-border bg-card text-foreground placeholder:text-muted-foreground/60 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all"
           />
           <Mail className="w-4 h-4 absolute left-3.5 top-3.5 text-muted-foreground pointer-events-none" />
@@ -81,7 +81,7 @@ export function LoginForm() {
           htmlFor="password"
           className="block text-xs uppercase tracking-wider font-mono text-muted-foreground"
         >
-          Key Phrase (Password)
+          Password
         </label>
         <div className="relative">
           <input
@@ -107,10 +107,10 @@ export function LoginForm() {
         {isLoading ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin" />
-            <span>Verifying Key...</span>
+            <span>Signing In...</span>
           </>
         ) : (
-          <span>Unlock Cabinet Admin</span>
+          <span>Sign In to Admin</span>
         )}
       </button>
     </form>

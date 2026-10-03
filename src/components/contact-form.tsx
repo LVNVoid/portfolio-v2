@@ -44,18 +44,18 @@ export function ContactForm() {
       <div className="p-8 text-center space-y-4 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40">
         <CheckCircle2 className="w-10 h-10 text-emerald-600 dark:text-emerald-400 mx-auto" />
         <h3 className="font-serif text-2xl text-foreground font-normal">
-          Inquiry Dispatch Confirmed
+          Message Sent Successfully
         </h3>
         <p className="text-xs sm:text-sm font-sans text-muted-foreground max-w-md mx-auto">
-          Your transmission has reached the curator desk. I will review your technical
-          specifications and respond promptly via email.
+          Thank you for reaching out! I have received your message and will get back to you
+          via email as soon as possible.
         </p>
         <button
           type="button"
           onClick={() => setSuccess(false)}
           className="px-4 py-2 min-h-[44px] rounded border border-border bg-card text-foreground font-mono text-xs uppercase tracking-wider hover:bg-secondary transition-colors"
         >
-          Send Another Transmission
+          Send Another Message
         </button>
       </div>
     );
@@ -79,12 +79,12 @@ export function ContactForm() {
             htmlFor="name"
             className="block text-xs uppercase tracking-wider font-mono text-muted-foreground"
           >
-            Correspondent Name *
+            Your Name *
           </label>
           <input
             id="name"
             {...register('name')}
-            placeholder="Jane Doe"
+            placeholder="Sarah Connor"
             className={`w-full h-11 min-h-[44px] px-3.5 rounded border bg-card text-foreground placeholder:text-muted-foreground/60 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary ${
               errors.name ? 'border-destructive' : 'border-border'
             }`}
@@ -99,13 +99,13 @@ export function ContactForm() {
             htmlFor="email"
             className="block text-xs uppercase tracking-wider font-mono text-muted-foreground"
           >
-            Return Dispatch Address (Email) *
+            Your Email Address *
           </label>
           <input
             id="email"
             type="email"
             {...register('email')}
-            placeholder="jane@organization.com"
+            placeholder="sarah@company.com"
             className={`w-full h-11 min-h-[44px] px-3.5 rounded border bg-card text-foreground placeholder:text-muted-foreground/60 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary ${
               errors.email ? 'border-destructive' : 'border-border'
             }`}
@@ -121,12 +121,12 @@ export function ContactForm() {
           htmlFor="subject"
           className="block text-xs uppercase tracking-wider font-mono text-muted-foreground"
         >
-          Subject / Inquiry Classification *
+          Subject *
         </label>
         <input
           id="subject"
           {...register('subject')}
-          placeholder="New System Architecture / Full-Time Role Consultation"
+          placeholder="Full-Stack Engineer Opportunity / Project Inquiry"
           className={`w-full h-11 min-h-[44px] px-3.5 rounded border bg-card text-foreground placeholder:text-muted-foreground/60 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary ${
             errors.subject ? 'border-destructive' : 'border-border'
           }`}
@@ -141,13 +141,13 @@ export function ContactForm() {
           htmlFor="message"
           className="block text-xs uppercase tracking-wider font-mono text-muted-foreground"
         >
-          Project Brief or Requirements *
+          Message *
         </label>
         <textarea
           id="message"
           rows={5}
           {...register('message')}
-          placeholder="Describe your technical requirements, timeline, or engineering opportunity..."
+          placeholder="Tell me about what you are building, timeline, or open role..."
           className={`w-full p-3.5 rounded border bg-card text-foreground placeholder:text-muted-foreground/60 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary leading-relaxed ${
             errors.message ? 'border-destructive' : 'border-border'
           }`}
@@ -165,11 +165,11 @@ export function ContactForm() {
         {isSubmitting ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin" />
-            <span>Transmitting Dispatch...</span>
+            <span>Sending...</span>
           </>
         ) : (
           <>
-            <span>Submit Transmission</span>
+            <span>Send Message</span>
             <Send className="w-3.5 h-3.5" />
           </>
         )}

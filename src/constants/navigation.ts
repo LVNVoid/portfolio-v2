@@ -1,39 +1,39 @@
 export interface NavItem {
   readonly label: string;
   readonly href: string;
-  readonly drawerNum: string;
+  readonly tag: string;
   readonly description: string;
 }
 
 export const NAV_ITEMS: readonly NavItem[] = [
   {
-    label: 'The Collection',
+    label: 'Projects',
     href: '/projects',
-    drawerNum: 'DR-01',
-    description: 'Cataloged engineering projects & live systems',
+    tag: '01',
+    description: 'Real web applications and live systems',
   },
   {
-    label: 'Field Notes',
+    label: 'About',
     href: '/about',
-    drawerNum: 'DR-02',
-    description: 'Background, research philosophy & stack anatomy',
+    tag: '02',
+    description: 'Background, skills, and education',
   },
   {
-    label: 'Credentials',
+    label: 'Certificates',
     href: '/certificates',
-    drawerNum: 'DR-03',
-    description: 'Verified professional certifications & honors',
+    tag: '03',
+    description: 'Verified professional certifications',
   },
   {
-    label: 'Laboratory',
+    label: 'Dashboard',
     href: '/dashboard',
-    drawerNum: 'DR-04',
-    description: 'Real-time telemetry & GitHub activity stream',
+    tag: '04',
+    description: 'GitHub activity and commit stream',
   },
   {
-    label: 'Inquiries',
+    label: 'Contact',
     href: '/contact',
-    drawerNum: 'DR-05',
-    description: 'Direct dispatch desk & consultation channels',
+    tag: '05',
+    description: 'Get in touch for roles or projects',
   },
 ] as const;

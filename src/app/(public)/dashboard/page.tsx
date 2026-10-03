@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Activity, GitCommit, GitPullRequest, GitFork, Terminal, ExternalLink, HardDrive } from 'lucide-react';
+import { Activity, GitCommit, Terminal, ExternalLink, HardDrive } from 'lucide-react';
 import { getGitHubStats } from '@/services/github-service';
 import { Sparkline } from '@/components/sparkline';
 
 export const metadata: Metadata = {
-  title: 'Laboratory — Developer Telemetry & Activity | Elvien',
+  title: 'Dashboard — Developer Activity | Elvien',
   description:
-    'Live telemetry dashboard, real-time GitHub commit feeds, and operational metrics of Elvien.',
+    'Live GitHub commit feeds, repository statistics, and active developer telemetry of Elvien.',
 };
 
 export default async function DashboardPage() {
@@ -16,19 +16,18 @@ export default async function DashboardPage() {
     <div className="space-y-10 max-w-5xl mx-auto">
       {/* Header */}
       <div className="space-y-3 border-b border-border pb-6">
-        <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-[11px] font-mono tracking-widest uppercase bg-secondary text-primary border border-border">
-          <span>Drawer Archive Index DR-04</span>
+        <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-[11px] font-mono tracking-wider uppercase bg-secondary text-primary border border-border">
+          <span>Activity [04]</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-serif font-normal text-foreground">
-          The Laboratory Telemetry
+          Developer Activity
         </h1>
         <p className="text-xs sm:text-sm font-sans text-muted-foreground max-w-2xl leading-relaxed">
-          Operational instrument board streaming real-time developer activity, repository
-          telemetry, and automated event logs directly from GitHub.
+          Real-time stream of my open-source code commits and repository activity, updated continuously from GitHub.
         </p>
       </div>
 
-      {/* Primary Metrics Dials */}
+      {/* Metrics Row */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
         <div className="vitrine-border bg-card p-5 rounded-lg space-y-2">
           <div className="flex items-center justify-between text-muted-foreground font-mono text-xs">
@@ -39,44 +38,44 @@ export default async function DashboardPage() {
             {stats.publicRepos}
           </div>
           <p className="text-[11px] font-mono text-muted-foreground">
-            Tracked production repositories
+            Active repositories on GitHub
           </p>
         </div>
 
         <div className="vitrine-border bg-card p-5 rounded-lg space-y-2">
           <div className="flex items-center justify-between text-muted-foreground font-mono text-xs">
-            <span className="uppercase tracking-wider">Active Stream</span>
+            <span className="uppercase tracking-wider">GitHub Stream</span>
             <Activity className="w-4 h-4 text-emerald-600 dark:text-emerald-400 animate-pulse" />
           </div>
           <div className="text-3xl font-serif font-normal text-foreground flex items-center gap-2">
-            <span>Synchronized</span>
+            <span>Online</span>
           </div>
           <p className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400">
-            5-minute cache cadence
+            Cached every 5 minutes
           </p>
         </div>
 
         <div className="vitrine-border bg-card p-5 rounded-lg space-y-2">
           <div className="flex items-center justify-between text-muted-foreground font-mono text-xs">
-            <span className="uppercase tracking-wider">Activity Pulse</span>
+            <span className="uppercase tracking-wider">Commit Cadence</span>
             <Sparkline width={60} height={16} />
           </div>
           <div className="text-3xl font-serif font-normal text-foreground">
-            Daily
+            Active
           </div>
           <p className="text-[11px] font-mono text-muted-foreground">
-            Continuous delivery loop
+            Continuous development cycle
           </p>
         </div>
       </div>
 
       {/* Recent Commit Event Logs */}
-      <section aria-label="Recent Commits Stream" className="space-y-4">
+      <section aria-label="Recent Commits Feed" className="space-y-4">
         <div className="flex items-center justify-between border-b border-border pb-2">
           <div className="flex items-center gap-2">
             <Terminal className="w-4 h-4 text-primary" />
-            <h2 className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
-              Recent Engineering Commits (Public Feed)
+            <h2 className="font-mono text-xs uppercase tracking-wider text-primary font-bold">
+              Recent Commits (GitHub Feed)
             </h2>
           </div>
           <a

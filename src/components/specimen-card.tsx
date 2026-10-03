@@ -20,16 +20,15 @@ export function SpecimenCard({ project, featured = false }: SpecimenCardProps) {
         featured ? 'md:col-span-2' : ''
       }`}
     >
-      {/* Top Specimen Registry Bar */}
+      {/* Top Project Registry Bar */}
       <div className="px-4 py-2.5 border-b border-border bg-secondary/40 flex items-center justify-between font-mono text-[10px] tracking-wider uppercase">
         <div className="flex items-center gap-2">
-          <span className="text-primary font-bold">#{project.slug}</span>
+          <span className="text-primary font-bold">{project.category}</span>
           <span className="text-muted-foreground/60 select-none">/</span>
-          <span className="text-muted-foreground">{project.year}</span>
+          <span className="text-muted-foreground">Year {project.year}</span>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-muted-foreground hidden sm:inline">{project.category}</span>
           {isLive ? (
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-semibold border border-emerald-300 dark:border-emerald-800 text-[10px]">
               <Radio className="w-2.5 h-2.5 animate-pulse text-emerald-600 dark:text-emerald-400" />
@@ -56,12 +55,12 @@ export function SpecimenCard({ project, featured = false }: SpecimenCardProps) {
           </p>
         </div>
 
-        {/* Pin-Mounted Display Thumbnail */}
+        {/* Display Thumbnail */}
         {project.image && (
           <div className="relative aspect-[16/9] w-full rounded border border-border/80 bg-secondary/30 overflow-hidden pin-tilted my-1">
             <Image
               src={project.image}
-              alt={`Specimen capture of ${project.title}`}
+              alt={`Preview of ${project.title}`}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover"
@@ -77,10 +76,10 @@ export function SpecimenCard({ project, featured = false }: SpecimenCardProps) {
           category={project.category}
         />
 
-        {/* Tech Stack Taxonomy Tags */}
+        {/* Tech Stack Tags */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
-            <span>Taxonomy Stack</span>
+            <span>Technologies</span>
             <Sparkline width={60} height={14} />
           </div>
           <div className="flex flex-wrap gap-1.5">
@@ -102,7 +101,7 @@ export function SpecimenCard({ project, featured = false }: SpecimenCardProps) {
           href={`/projects/${project.slug}`}
           className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors min-h-[44px] py-2"
         >
-          <span>Examine Record</span>
+          <span>Project Details</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </Link>
 
@@ -113,7 +112,7 @@ export function SpecimenCard({ project, featured = false }: SpecimenCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 min-h-[44px] min-w-[44px] inline-flex items-center justify-center rounded border border-border bg-secondary/40 text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
-              title="View Repository Source"
+              title="View Source Code"
               aria-label={`Source repository for ${project.title}`}
             >
               <Github className="w-4 h-4" />
@@ -127,7 +126,7 @@ export function SpecimenCard({ project, featured = false }: SpecimenCardProps) {
               rel="noopener noreferrer"
               className="px-3.5 py-2 min-h-[44px] inline-flex items-center gap-1.5 rounded bg-primary text-primary-foreground font-semibold uppercase tracking-wider text-[11px] hover:bg-primary/90 transition-colors shadow-sm cursor-pointer"
             >
-              <span>Inspect Live</span>
+              <span>Live Demo</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           )}

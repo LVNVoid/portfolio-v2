@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Server, Database, Globe, Cpu } from 'lucide-react';
+import { Server, Database, Globe } from 'lucide-react';
 
 interface ArchitectureDiagramProps {
   services?: number;
@@ -19,15 +19,15 @@ export function ArchitectureDiagram({
       className={`p-3 rounded border border-border/80 bg-secondary/30 font-mono text-[10px] space-y-2 ${className}`}
     >
       <div className="flex items-center justify-between text-muted-foreground border-b border-border/60 pb-1">
-        <span className="uppercase tracking-widest text-[9px]">Topology Spec</span>
-        <span className="text-[9px] text-primary">{category}</span>
+        <span className="uppercase tracking-wider text-[9px]">Architecture Overview</span>
+        <span className="text-[9px] text-primary font-medium">{category}</span>
       </div>
 
       <div className="flex items-center justify-between gap-1.5 pt-1">
         {/* Client Layer */}
         <div className="flex flex-col items-center gap-1 p-1.5 rounded border border-border/60 bg-card/60 flex-1 text-center">
           <Globe className="w-3.5 h-3.5 text-primary" />
-          <span className="text-[9px] leading-none">Client Edge</span>
+          <span className="text-[9px] leading-none">Frontend UI</span>
         </div>
 
         {/* Connector */}
@@ -46,7 +46,7 @@ export function ArchitectureDiagram({
         <div className="flex flex-col items-center gap-1 p-1.5 rounded border border-border/60 bg-card/60 flex-1 text-center">
           <Database className="w-3.5 h-3.5 text-primary" />
           <span className="text-[9px] leading-none">
-            {databases > 0 ? `${databases} DB` : 'Serverless'}
+            {databases > 0 ? `${databases} Database` : 'Serverless'}
           </span>
         </div>
       </div>

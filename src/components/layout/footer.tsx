@@ -10,15 +10,15 @@ export function Footer() {
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <span className="font-serif text-lg font-normal text-foreground">
-              The Specimen Cabinet
+              Elvien
             </span>
             <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-secondary text-primary border border-border">
-              Archival Registry
+              Software Engineer
             </span>
           </div>
           <p className="text-xs text-muted-foreground font-mono max-w-md">
-            Production systems exhibition and architectural telemetry records.
-            Engineered with Next.js 16, Prisma ORM, and PostgreSQL.
+            Personal portfolio showcasing full-stack applications, point-of-sale tools, and automation bots.
+            Built with Next.js 16, TypeScript, and PostgreSQL.
           </p>
         </div>
 
@@ -46,13 +46,13 @@ export function Footer() {
             className="inline-flex items-center gap-1.5 hover:text-primary transition-colors min-h-[44px] py-2"
           >
             <Lock className="w-3 h-3" />
-            <span>Curator Vault</span>
+            <span>Admin Login</span>
           </Link>
         </div>
       </div>
 
       <div className="border-t border-border/60 py-4 text-center text-[11px] font-mono text-muted-foreground">
-        <span>© {currentYear} Elvien · All specimen rights cataloged · Jakarta, Indonesia (WIB)</span>
+        <span>© {currentYear} Elvien · All rights reserved · Jakarta, Indonesia (WIB)</span>
       </div>
     </footer>
   );

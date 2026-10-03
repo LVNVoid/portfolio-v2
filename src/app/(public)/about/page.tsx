@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, BookOpen, GraduationCap, Code2, MapPin, Mail, Download } from 'lucide-react';
+import { ArrowRight, GraduationCap, Code2, MapPin, Mail, Download } from 'lucide-react';
 import { getProfile } from '@/services/profile-service';
 import { getSkillsGroupedByCategory } from '@/services/skill-service';
 import { getEducations } from '@/services/education-service';
 
 export const metadata: Metadata = {
-  title: 'Field Notes — Biography & Systems Anatomy | Elvien',
+  title: 'About Me — Background & Skills | Elvien',
   description:
-    'Curator profile, background, technical methodology, and academic credentials of Elvien (Full-Stack Engineer).',
+    'Profile, background, core technical skills, and education of Elvien (Full-Stack Software Engineer).',
 };
 
 export default async function AboutPage() {
@@ -20,25 +20,24 @@ export default async function AboutPage() {
   ]);
 
   const defaultBio =
-    "I am a Full-Stack Engineer based in Indonesia, focused on engineering resilient web applications and autonomous software systems. Rather than treating code as abstract syntax, I view every software deliverable as a living machine that must perform reliably in production—from typed database schemas and server actions to touch ergonomics and serverless deployment.";
+    "I am a Full-Stack Software Engineer based in Indonesia. I enjoy building clean, reliable web applications and automation tools. Over the past few years, I have worked across the entire stack—designing relational database models, writing typed server actions, and creating accessible, responsive user interfaces.";
 
   return (
     <div className="space-y-12 max-w-4xl mx-auto">
       {/* Header */}
       <div className="space-y-3 border-b border-border pb-6">
-        <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-[11px] font-mono tracking-widest uppercase bg-secondary text-primary border border-border">
-          <span>Drawer Archive Index DR-02</span>
+        <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-[11px] font-mono tracking-wider uppercase bg-secondary text-primary border border-border">
+          <span>About Me [02]</span>
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-foreground">
-          Field Notes & Anatomy
+          About Me
         </h1>
         <p className="text-xs sm:text-sm font-sans text-muted-foreground leading-relaxed">
-          The practitioner behind the vitrine: biographical background, technical convictions,
-          and foundational training.
+          My background, engineering philosophy, and educational credentials.
         </p>
       </div>
 
-      {/* Main Curator Dossier */}
+      {/* Main Profile Card */}
       <div className="vitrine-border bg-card rounded-xl p-6 sm:p-10 space-y-8 relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-primary" />
 
@@ -56,19 +55,19 @@ export default async function AboutPage() {
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center font-mono text-xs text-muted-foreground">
-                  [Curator Portrait]
+                  [Profile Photo]
                 </div>
               )}
             </div>
 
             <div className="space-y-1.5 font-mono text-xs">
               <div className="text-foreground font-semibold text-sm">
-                {profile?.name || 'Elvien'}
+                {profile?.name || 'Elvien Aninditha Purnawan'}
               </div>
-              <div className="text-primary">{profile?.role || 'Full-Stack Engineer'}</div>
+              <div className="text-primary">{profile?.role || 'Full-Stack Developer'}</div>
               <div className="flex items-center gap-1.5 text-muted-foreground pt-1">
                 <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
-                <span>{profile?.location || 'Indonesia (WIB / UTC+7)'}</span>
+                <span>{profile?.location || 'Jakarta, Indonesia (WIB / UTC+7)'}</span>
               </div>
               <div className="flex items-center gap-1.5 text-muted-foreground">
                 <Mail className="w-3.5 h-3.5 text-muted-foreground" />
@@ -80,11 +79,11 @@ export default async function AboutPage() {
           {/* Narrative Content */}
           <div className="md:col-span-8 space-y-6">
             <div className="space-y-3">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-primary font-bold">
-                Practitioner Statement
+              <span className="text-[10px] font-mono uppercase tracking-wider text-primary font-bold">
+                Background & Focus
               </span>
               <h2 className="text-2xl font-serif font-normal text-foreground leading-snug">
-                Engineering production systems with end-to-end discipline.
+                Building production web systems that are fast and dependable.
               </h2>
               <p className="text-xs sm:text-sm font-sans text-muted-foreground leading-relaxed whitespace-pre-line">
                 {profile?.bio || defaultBio}
@@ -93,37 +92,46 @@ export default async function AboutPage() {
 
             <div className="p-4 rounded border border-border/80 bg-secondary/30 space-y-2 font-mono text-xs">
               <div className="text-primary font-bold uppercase tracking-wider text-[11px]">
-                The Three Engineering Axioms
+                How I Work
               </div>
               <ul className="space-y-1.5 text-muted-foreground text-[11px] list-disc list-inside">
-                <li><strong className="text-foreground">Proof over Claims:</strong> A project without a live URL is an unfinished thesis.</li>
-                <li><strong className="text-foreground">Zero UI Logic:</strong> Business calculations belong in actions and services, never in components.</li>
-                <li><strong className="text-foreground">Ergonomic Rigor:</strong> 44px tap targets, zero horizontal overflows, and sub-second cold starts.</li>
+                <li><strong className="text-foreground">Proof Over Claims:</strong> Working production code always beats unverified mockups.</li>
+                <li><strong className="text-foreground">Strict Type Safety:</strong> Zero any, strict Zod schemas, and reliable runtime contracts.</li>
+                <li><strong className="text-foreground">Fast & Accessible:</strong> 44px tap targets, sub-second loads, and zero layout overflow.</li>
               </ul>
             </div>
 
-            <div className="pt-2 flex flex-wrap gap-3">
+            <div className="pt-2 flex flex-wrap gap-3 font-mono text-xs">
               <Link
                 href="/contact"
-                className="px-4 py-2.5 min-h-[44px] rounded bg-primary text-primary-foreground font-mono text-xs uppercase tracking-wider font-semibold hover:bg-primary/90 transition-colors inline-flex items-center gap-2 shadow"
+                className="px-4 py-2.5 min-h-[44px] rounded bg-primary text-primary-foreground uppercase tracking-wider font-semibold hover:bg-primary/90 transition-colors inline-flex items-center gap-2 shadow"
               >
-                <span>Initiate Consultation</span>
+                <span>Get in Touch</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
+
+              <a
+                href="/cv.pdf"
+                target="_blank"
+                className="px-4 py-2.5 min-h-[44px] rounded border border-border bg-secondary/50 text-foreground uppercase tracking-wider hover:bg-secondary transition-colors inline-flex items-center gap-2"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download CV (PDF)</span>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Skills Taxonomy Section */}
-      <section aria-label="Technical Skills Taxonomy" className="space-y-6">
+      {/* Skills Section */}
+      <section aria-label="Technical Skills" className="space-y-6">
         <div className="flex items-center justify-between border-b border-border pb-3">
           <div className="space-y-1">
-            <span className="text-[10px] font-mono tracking-widest uppercase text-primary font-bold">
-              Taxonomy Classification
+            <span className="text-[10px] font-mono tracking-wider uppercase text-primary font-bold">
+              Tech Stack
             </span>
             <h2 className="text-2xl font-serif font-normal text-foreground">
-              Technical Stack & Apparatus
+              Skills & Technologies
             </h2>
           </div>
           <Code2 className="w-5 h-5 text-muted-foreground" />
@@ -141,7 +149,7 @@ export default async function AboutPage() {
                     {category}
                   </h3>
                   <span className="text-[10px] font-mono text-muted-foreground">
-                    {items.length} units
+                    {items.length} skills
                   </span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
@@ -158,21 +166,21 @@ export default async function AboutPage() {
             ))
           ) : (
             <div className="col-span-full p-8 text-center text-xs font-mono text-muted-foreground border border-dashed border-border rounded">
-              Skills taxonomy registry will populate upon database seed.
+              Skills will populate upon database seed.
             </div>
           )}
         </div>
       </section>
 
-      {/* Academic Background Section */}
-      <section aria-label="Academic Records" className="space-y-6">
+      {/* Education Section */}
+      <section aria-label="Education" className="space-y-6">
         <div className="flex items-center justify-between border-b border-border pb-3">
           <div className="space-y-1">
-            <span className="text-[10px] font-mono tracking-widest uppercase text-primary font-bold">
-              Curriculum Vitae
+            <span className="text-[10px] font-mono tracking-wider uppercase text-primary font-bold">
+              Background
             </span>
             <h2 className="text-2xl font-serif font-normal text-foreground">
-              Academic Background & Training
+              Education
             </h2>
           </div>
           <GraduationCap className="w-5 h-5 text-muted-foreground" />
@@ -205,7 +213,7 @@ export default async function AboutPage() {
             ))
           ) : (
             <div className="p-8 text-center text-xs font-mono text-muted-foreground border border-dashed border-border rounded">
-              Education timeline entries cataloged in database.
+              Education entries will populate upon database seed.
             </div>
           )}
         </div>

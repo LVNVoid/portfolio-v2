@@ -45,10 +45,10 @@ export default async function AdminLayout({
               <span className="w-2.5 h-2.5 rounded-full bg-primary" />
               <div className="flex flex-col">
                 <span className="font-serif text-lg font-normal text-foreground group-hover:text-primary transition-colors">
-                  Cabinet Curator
+                  Portfolio Admin
                 </span>
                 <span className="text-[10px] font-mono tracking-widest text-muted-foreground uppercase">
-                  Admin Workspace
+                  Content Manager
                 </span>
               </div>
             </Link>
@@ -84,7 +84,7 @@ export default async function AdminLayout({
               className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground transition-colors min-h-[44px] py-1 text-[11px]"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Public Vitrine</span>
+              <span>View Public Site</span>
             </Link>
 
             <Link

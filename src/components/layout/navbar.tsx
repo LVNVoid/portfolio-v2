@@ -14,23 +14,23 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/90 backdrop-blur-md transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-        {/* Museum Brass Nameplate Header */}
+        {/* Profile Branding Header */}
         <Link
           href="/"
           className="group inline-flex items-center gap-3 min-h-[44px] py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
         >
-          <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
           <div className="flex flex-col">
             <span className="font-serif tracking-tight text-lg sm:text-xl font-normal text-foreground group-hover:text-primary transition-colors">
               ELVIEN
             </span>
-            <span className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground">
-              Full-Stack Specimens
+            <span className="text-[10px] font-mono tracking-wider uppercase text-muted-foreground">
+              Full-Stack Developer
             </span>
           </div>
         </Link>
 
-        {/* Desktop Brass Drawer Tabs */}
+        {/* Desktop Navigation Tabs */}
         <nav
           aria-label="Main Navigation"
           className="hidden md:flex items-center gap-1.5"
@@ -97,7 +97,7 @@ export function Navbar() {
                 }`}
               >
                 <span>{item.label}</span>
-                <span className="text-[10px] opacity-70">{item.drawerNum}</span>
+                <span className="text-[10px] opacity-70">[{item.tag}]</span>
               </Link>
             );
           })}

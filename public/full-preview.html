@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elvien — Full-Stack Developer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['Geist Mono', 'ui-monospace', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0d0e;
+      --card: #131518;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.2);
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+    }
+    html:not(.dark) {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: rgba(0, 0, 0, 0.08);
+      --border-hover: rgba(0, 0, 0, 0.2);
+      --text: #0f172a;
+      --muted: #64748b;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .craft-card {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .craft-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+    ::selection {
+      background-color: #3b82f6;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-blue-600 selection:text-white">
+
+  <!-- Sticky Navbar -->
+  <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-opacity-80 border-b transition-colors" style="background-color: rgba(12, 13, 14, 0.8); border-color: var(--border);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <!-- Profile Branding -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="relative w-9 h-9 rounded-full overflow-hidden border border-white/10 shrink-0">
+          <img src="https://res.cloudinary.com/dmvludl4w/image/upload/v1774809547/profile/pkmoyuki1naorc4upmv6.jpg" alt="Elvien" class="w-full h-full object-cover">
+        </div>
+        <div>
+          <div class="text-sm font-semibold tracking-tight group-hover:text-blue-400 transition-colors">Elvien</div>
+          <div class="text-[11px] font-mono opacity-60">Full-Stack Engineer</div>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-mono tracking-wide text-zinc-400">
+        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+        <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#certificates" class="hover:text-white transition-colors">Certificates</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Controls -->
+      <div class="flex items-center gap-3">
+        <!-- Theme Switcher -->
+        <button id="themeToggle" type="button" class="w-9 h-9 min-h-[44px] min-w-[44px] rounded-lg border border-white/10 hover:border-white/20 flex items-center justify-center text-zinc-400 hover:text-white transition-colors cursor-pointer" aria-label="Toggle theme">
+          <svg id="moonIcon" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          <svg id="sunIcon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        </button>
+
+        <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 min-h-[44px] rounded-lg bg-white dark:bg-white text-black font-medium text-xs hover:bg-zinc-200 transition-colors shadow-sm">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 space-y-20">
+
+    <!-- 1. Hero Section (Plain English, Friendly, Direct) -->
+    <section class="space-y-6 pt-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 text-xs font-mono">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Available for new projects & roles</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-semibold tracking-tight leading-[1.15] max-w-3xl">
+        Hi, I'm Elvien. I build fast, reliable web applications from idea to launch.
+      </h1>
+
+      <p class="text-base sm:text-lg text-zinc-400 max-w-2xl font-normal leading-relaxed">
+        I am a full-stack software engineer based in Indonesia. I create modern websites, retail cashier tools, and automated workflows using Next.js, TypeScript, and PostgreSQL. Every project below is live and working in production.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a href="#projects" class="px-5 py-2.5 min-h-[44px] rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-colors inline-flex items-center gap-2 shadow">
+          <span>See My Work</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </a>
+        <a href="#contact" class="px-5 py-2.5 min-h-[44px] rounded-lg border border-white/10 hover:border-white/20 text-white font-medium text-sm transition-colors inline-flex items-center gap-2">
+          <span>Get in Touch</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+        <a href="/cv.pdf" target="_blank" class="px-4 py-2.5 min-h-[44px] text-zinc-400 hover:text-white font-mono text-xs inline-flex items-center gap-1.5 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          <span>Download CV (PDF)</span>
+        </a>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-white/10">
+        <div class="p-3.5 rounded-lg border border-white/5 bg-white/[0.02]">
+          <div class="text-xl sm:text-2xl font-bold font-mono text-white">7+</div>
+          <div class="text-xs text-zinc-400">Live Web Systems</div>
+        </div>
+        <div class="p-3.5 rounded-lg border border-white/5 bg-white/[0.02]">
+          <div class="text-xl sm:text-2xl font-bold font-mono text-white">3+ Years</div>
+          <div class="text-xs text-zinc-400">Engineering Exp</div>
+        </div>
+        <div class="p-3.5 rounded-lg border border-white/5 bg-white/[0.02]">
+          <div class="text-xl sm:text-2xl font-bold font-mono text-white">100%</div>
+          <div class="text-xs text-zinc-400">Type-Safe TypeScript</div>
+        </div>
+        <div class="p-3.5 rounded-lg border border-white/5 bg-white/[0.02]">
+          <div class="text-xl sm:text-2xl font-bold font-mono text-white">5</div>
+          <div class="text-xs text-zinc-400">Certifications</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Featured Projects Section -->
+    <section id="projects" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">Featured Projects</h2>
+          <p class="text-xs sm:text-sm text-zinc-400 pt-0.5">Real products I have designed, built, and deployed.</p>
+        </div>
+        <span class="text-xs font-mono text-zinc-500 hidden sm:inline">All Links Verified Live</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Project 1: MagangHub -->
+        <article class="craft-card rounded-xl p-5 space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="aspect-[16/10] w-full rounded-lg overflow-hidden border border-white/10 bg-zinc-900">
+              <img src="https://elvien.net/projects/maganghub-bot-attendance.png" alt="MagangHub Bot Attendance" class="w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-white">MagangHub Bot Attendance</h3>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Live App</span>
+              </div>
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                An automated system that helps government interns complete daily attendance and submit structured 3-part internship reports on schedule without manual hassle.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-zinc-400">
+              <span class="px-2 py-0.5 rounded bg-white/5">Next.js 16</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">TypeScript</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">PostgreSQL</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">Tinyproxy</span>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <a href="https://github.com/LVNVoid/maganghub-bot-attendance" target="_blank" class="text-zinc-400 hover:text-white transition-colors flex items-center gap-1 min-h-[44px] py-2">
+              <span>Source Code</span> ↗
+            </a>
+            <a href="https://maganghub-bot-attendance.vercel.app" target="_blank" class="px-3.5 py-2 min-h-[44px] rounded bg-white/10 hover:bg-white/20 text-white font-medium transition-colors flex items-center gap-1.5">
+              <span>Visit Live Demo</span> ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2: Kopi Sangkara POS -->
+        <article class="craft-card rounded-xl p-5 space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="aspect-[16/10] w-full rounded-lg overflow-hidden border border-white/10 bg-zinc-900">
+              <img src="https://elvien.net/projects/kopi-sangkara-pos.png" alt="Kopi Sangkara POS" class="w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-white">Kopi Sangkara Point of Sale</h3>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Live App</span>
+              </div>
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                A touch-friendly tablet cashier application for specialty coffee shops. Features direct Web Bluetooth receipt printing on 58mm thermal printers and shift reconciliation.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-zinc-400">
+              <span class="px-2 py-0.5 rounded bg-white/5">Next.js 16</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">Web Bluetooth</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">Prisma</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">PWA</span>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <a href="https://github.com/LVNVoid/kopi-sangkara-pos" target="_blank" class="text-zinc-400 hover:text-white transition-colors flex items-center gap-1 min-h-[44px] py-2">
+              <span>Source Code</span> ↗
+            </a>
+            <a href="https://kopi-sangkara-pos.vercel.app" target="_blank" class="px-3.5 py-2 min-h-[44px] rounded bg-white/10 hover:bg-white/20 text-white font-medium transition-colors flex items-center gap-1.5">
+              <span>Visit Live Demo</span> ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 3: Google Review Card Generator -->
+        <article class="craft-card rounded-xl p-5 space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="aspect-[16/10] w-full rounded-lg overflow-hidden border border-white/10 bg-zinc-900">
+              <img src="https://elvien.net/projects/google-review-card-generator.png" alt="Review Card Generator" class="w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-white">Google Review Card Generator</h3>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Live Tool</span>
+              </div>
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                An online tool that generates high-resolution, print-ready physical cards and stickers with dynamic QR codes that link directly to Google 5-star review dialogs.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-zinc-400">
+              <span class="px-2 py-0.5 rounded bg-white/5">Next.js 15</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">Canvas & jsPDF</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">QR Proxy</span>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <a href="https://github.com/LVNVoid/review-card-generator" target="_blank" class="text-zinc-400 hover:text-white transition-colors flex items-center gap-1 min-h-[44px] py-2">
+              <span>Source Code</span> ↗
+            </a>
+            <a href="https://review-card-generator.vercel.app" target="_blank" class="px-3.5 py-2 min-h-[44px] rounded bg-white/10 hover:bg-white/20 text-white font-medium transition-colors flex items-center gap-1.5">
+              <span>Visit Live Demo</span> ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 4: Hospital E-Klaim -->
+        <article class="craft-card rounded-xl p-5 space-y-4 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="aspect-[16/10] w-full rounded-lg overflow-hidden border border-white/10 bg-zinc-900">
+              <img src="https://elvien.net/projects/hospital-eklaim-integration.png" alt="Hospital E-Klaim" class="w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-white">Hospital E-Klaim Integration</h3>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">Enterprise</span>
+              </div>
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                Enterprise healthcare claim processing system connecting internal hospital management databases (SIMRS) with Ministry of Health and BPJS web services via AES-256 encryption.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 font-mono text-[11px] text-zinc-400">
+              <span class="px-2 py-0.5 rounded bg-white/5">React 19</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">Node.js</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">MS SQL Server</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">AES-256</span>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span class="text-zinc-500">Internal SIMRS Deployment</span>
+            <span class="text-zinc-400">Enterprise Private</span>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Secondary Projects Row -->
+      <div class="pt-4">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-zinc-400 mb-3">Additional Deployed Work</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="craft-card p-4 rounded-lg space-y-2">
+            <div class="text-sm font-semibold text-white">Tim Kurator KHS</div>
+            <p class="text-xs text-zinc-400">Corporate transparency portal for court-appointed curator team.</p>
+            <a href="https://timkurator-kusumahadisantosa.id" target="_blank" class="text-xs font-mono text-blue-400 hover:underline inline-flex items-center gap-1 pt-1">
+              Visit Site ↗
+            </a>
+          </div>
+
+          <div class="craft-card p-4 rounded-lg space-y-2">
+            <div class="text-sm font-semibold text-white">SPLD Lab Scheduler</div>
+            <p class="text-xs text-zinc-400">Facility reservation and inventory tool for computer labs.</p>
+            <a href="https://spld-app.vercel.app/" target="_blank" class="text-xs font-mono text-blue-400 hover:underline inline-flex items-center gap-1 pt-1">
+              Visit Site ↗
+            </a>
+          </div>
+
+          <div class="craft-card p-4 rounded-lg space-y-2">
+            <div class="text-sm font-semibold text-white">Foman Kreasi</div>
+            <p class="text-xs text-zinc-400">Commercial printing catalogue and merchandise quote portal.</p>
+            <span class="text-xs font-mono text-zinc-500 block pt-1">Client Showcase</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Skills Section -->
+    <section id="skills" class="space-y-6">
+      <div class="border-b border-white/10 pb-4">
+        <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">Skills & Tech Stack</h2>
+        <p class="text-xs sm:text-sm text-zinc-400 pt-0.5">The primary tools and technologies I use to build production software.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 font-mono text-xs">
+        <div class="craft-card p-4 rounded-lg space-y-2.5">
+          <div class="font-semibold text-white border-b border-white/10 pb-1.5 flex items-center justify-between">
+            <span>Languages</span>
+            <span class="text-zinc-500">04</span>
+          </div>
+          <div class="space-y-1 text-zinc-400">
+            <div>• TypeScript</div>
+            <div>• JavaScript (ESNext)</div>
+            <div>• Python</div>
+            <div>• SQL</div>
+          </div>
+        </div>
+
+        <div class="craft-card p-4 rounded-lg space-y-2.5">
+          <div class="font-semibold text-white border-b border-white/10 pb-1.5 flex items-center justify-between">
+            <span>Frontend</span>
+            <span class="text-zinc-500">05</span>
+          </div>
+          <div class="space-y-1 text-zinc-400">
+            <div>• Next.js 16 (App Router)</div>
+            <div>• React 19</div>
+            <div>• Tailwind CSS v4</div>
+            <div>• Framer Motion</div>
+            <div>• shadcn/ui & Radix</div>
+          </div>
+        </div>
+
+        <div class="craft-card p-4 rounded-lg space-y-2.5">
+          <div class="font-semibold text-white border-b border-white/10 pb-1.5 flex items-center justify-between">
+            <span>Backend & DB</span>
+            <span class="text-zinc-500">04</span>
+          </div>
+          <div class="space-y-1 text-zinc-400">
+            <div>• Node.js & Express</div>
+            <div>• Prisma ORM</div>
+            <div>• PostgreSQL (Neon)</div>
+            <div>• Zod Validations</div>
+          </div>
+        </div>
+
+        <div class="craft-card p-4 rounded-lg space-y-2.5">
+          <div class="font-semibold text-white border-b border-white/10 pb-1.5 flex items-center justify-between">
+            <span>DevOps & Cloud</span>
+            <span class="text-zinc-500">04</span>
+          </div>
+          <div class="space-y-1 text-zinc-400">
+            <div>• Linux VPS & SSH</div>
+            <div>• Vercel Platform</div>
+            <div>• Git & GitHub CI</div>
+            <div>• Cloudflare & Proxies</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Verified Certificates Section -->
+    <section id="certificates" class="space-y-6">
+      <div class="border-b border-white/10 pb-4">
+        <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">Verified Certifications</h2>
+        <p class="text-xs sm:text-sm text-zinc-400 pt-0.5">Competency certificates verified by Dicoding Indonesia.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="craft-card p-4 rounded-lg flex items-center justify-between gap-3">
+          <div>
+            <div class="text-sm font-semibold text-white">Belajar Membuat Aplikasi Web dengan React</div>
+            <div class="text-xs text-zinc-400 font-mono">Dicoding Indonesia • Nov 2025</div>
+          </div>
+          <a href="https://www.dicoding.com/certificates/QLZ9RE069P5D" target="_blank" class="px-3 py-1.5 min-h-[44px] rounded bg-white/5 hover:bg-white/10 text-xs font-mono text-zinc-300 hover:text-white transition-colors inline-flex items-center gap-1 shrink-0">
+            <span>Verify</span> ↗
+          </a>
+        </div>
+
+        <div class="craft-card p-4 rounded-lg flex items-center justify-between gap-3">
+          <div>
+            <div class="text-sm font-semibold text-white">Belajar Dasar Pemrograman Web</div>
+            <div class="text-xs text-zinc-400 font-mono">Dicoding Indonesia • Nov 2025</div>
+          </div>
+          <a href="https://www.dicoding.com/certificates/EYX4YK75OZDL" target="_blank" class="px-3 py-1.5 min-h-[44px] rounded bg-white/5 hover:bg-white/10 text-xs font-mono text-zinc-300 hover:text-white transition-colors inline-flex items-center gap-1 shrink-0">
+            <span>Verify</span> ↗
+          </a>
+        </div>
+
+        <div class="craft-card p-4 rounded-lg flex items-center justify-between gap-3">
+          <div>
+            <div class="text-sm font-semibold text-white">Belajar Dasar Git dengan GitHub</div>
+            <div class="text-xs text-zinc-400 font-mono">Dicoding Indonesia • Nov 2025</div>
+          </div>
+          <a href="https://www.dicoding.com/certificates/QLZ94EYLMP5D" target="_blank" class="px-3 py-1.5 min-h-[44px] rounded bg-white/5 hover:bg-white/10 text-xs font-mono text-zinc-300 hover:text-white transition-colors inline-flex items-center gap-1 shrink-0">
+            <span>Verify</span> ↗
+          </a>
+        </div>
+
+        <div class="craft-card p-4 rounded-lg flex items-center justify-between gap-3">
+          <div>
+            <div class="text-sm font-semibold text-white">Belajar Back-End Pemula dengan JavaScript</div>
+            <div class="text-xs text-zinc-400 font-mono">Dicoding Indonesia • Nov 2025</div>
+          </div>
+          <a href="https://www.dicoding.com/certificates/53XEO5V0YZRN" target="_blank" class="px-3 py-1.5 min-h-[44px] rounded bg-white/5 hover:bg-white/10 text-xs font-mono text-zinc-300 hover:text-white transition-colors inline-flex items-center gap-1 shrink-0">
+            <span>Verify</span> ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. About Me & Education -->
+    <section id="about" class="space-y-6">
+      <div class="border-b border-white/10 pb-4">
+        <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">About Me</h2>
+        <p class="text-xs sm:text-sm text-zinc-400 pt-0.5">Background, work philosophy, and education.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        <div class="md:col-span-8 space-y-4 text-sm text-zinc-300 leading-relaxed font-normal">
+          <p>
+            I am a full-stack engineer who enjoys turning complex workflows into fast, clean software. I specialize in the modern React and Next.js ecosystem, writing strict TypeScript contracts from database schemas down to user interface components.
+          </p>
+          <p>
+            My work spans diverse problems: from building real-time cashier systems connecting to Bluetooth thermal hardware, to cloud automation bots bypassing strict government firewall proxies, to pixel-precise PDF generators for physical QR cards.
+          </p>
+          <p>
+            When building software, I focus on three core principles:
+          </p>
+          <ul class="space-y-1.5 text-xs font-mono text-zinc-400 list-disc list-inside pt-1">
+            <li><strong class="text-white">Live Proof:</strong> Working code in production always beats unfinished mockups.</li>
+            <li><strong class="text-white">Clean Architecture:</strong> Strict separation between business logic and UI components.</li>
+            <li><strong class="text-white">Speed & Accessibility:</strong> Fast loading times, keyboard navigation, and mobile-friendly tap targets.</li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 craft-card p-5 rounded-xl space-y-4">
+          <div class="text-xs font-mono text-zinc-400 uppercase tracking-wider border-b border-white/10 pb-2">
+            Education
+          </div>
+          <div class="space-y-1">
+            <div class="text-sm font-semibold text-white">Universitas Muhammadiyah Magelang</div>
+            <div class="text-xs text-blue-400 font-mono">Bachelor of Computer Science</div>
+            <div class="text-xs text-zinc-500 font-mono">2021 — 2025</div>
+            <p class="text-xs text-zinc-400 pt-1">
+              Focused on software architecture, web development, and relational database systems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Contact Section (Direct, Clean, Functional) -->
+    <section id="contact" class="space-y-6">
+      <div class="border-b border-white/10 pb-4">
+        <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">Get in Touch</h2>
+        <p class="text-xs sm:text-sm text-zinc-400 pt-0.5">Let's discuss your next project, technical role, or consulting engagement.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        <div class="md:col-span-5 space-y-4">
+          <p class="text-sm text-zinc-400 leading-relaxed">
+            I am currently open to full-time software engineering positions and select freelance web development projects. Send me an email or message me on LinkedIn—I usually reply within 24 hours.
+          </p>
+
+          <div class="space-y-2.5 font-mono text-xs pt-2">
+            <div class="p-3 rounded-lg border border-white/10 bg-white/[0.02]">
+              <span class="text-zinc-500 text-[10px] uppercase block">Email</span>
+              <a href="mailto:elvien.purnawan13@gmail.com" class="text-white hover:text-blue-400 transition-colors font-medium">
+                elvien.purnawan13@gmail.com
+              </a>
+            </div>
+            <div class="p-3 rounded-lg border border-white/10 bg-white/[0.02]">
+              <span class="text-zinc-500 text-[10px] uppercase block">Location</span>
+              <span class="text-white font-medium">Jakarta, Indonesia (WIB / UTC+7)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="md:col-span-7 craft-card p-6 rounded-xl space-y-4">
+          <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent.');" class="space-y-4 text-xs font-mono">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label class="text-zinc-400 uppercase text-[10px]">Your Name *</label>
+                <input required type="text" placeholder="Sarah Connor" class="w-full h-11 min-h-[44px] px-3.5 rounded-lg border border-white/10 bg-black/40 text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 text-sm">
+              </div>
+              <div class="space-y-1">
+                <label class="text-zinc-400 uppercase text-[10px]">Your Email *</label>
+                <input required type="email" placeholder="sarah@company.com" class="w-full h-11 min-h-[44px] px-3.5 rounded-lg border border-white/10 bg-black/40 text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 text-sm">
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label class="text-zinc-400 uppercase text-[10px]">Subject *</label>
+              <input required type="text" placeholder="Full-Stack Engineer Opportunity / Project Inquiry" class="w-full h-11 min-h-[44px] px-3.5 rounded-lg border border-white/10 bg-black/40 text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 text-sm">
+            </div>
+
+            <div class="space-y-1">
+              <label class="text-zinc-400 uppercase text-[10px]">Message *</label>
+              <textarea required rows="4" placeholder="Tell me about what you are building..." class="w-full p-3.5 rounded-lg border border-white/10 bg-black/40 text-white placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 text-sm leading-relaxed"></textarea>
+            </div>
+
+            <button type="submit" class="w-full sm:w-auto px-6 py-3 min-h-[44px] rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs tracking-wider uppercase transition-colors cursor-pointer shadow">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Clean Footer -->
+  <footer class="max-w-4xl mx-auto px-4 sm:px-6 border-t border-white/10 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
+    <div>© 2026 Elvien. Built with Next.js & TypeScript.</div>
+    <div class="flex items-center gap-6">
+      <a href="https://github.com/LVNVoid" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+      <a href="https://linkedin.com/in/elvien" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
+      <a href="https://elvien.net" target="_blank" class="hover:text-white transition-colors">elvien.net</a>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('themeToggle');
+    btn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+  </script>
+</body>
+</html>
