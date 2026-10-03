@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Plus, Trash2, Sparkles } from 'lucide-react';
+import { SkillIcon } from '@/components/skill-icon';
 import db from '@/services/db';
 import { createSkillAction, deleteSkillAction } from '@/actions/skill-actions';
 
@@ -86,7 +87,10 @@ export default async function AdminSkillsPage() {
               skills.map((skill) => (
                 <tr key={skill.id} className="hover:bg-secondary/20 transition-colors">
                   <td className="p-3 sm:p-4 font-semibold text-foreground">
-                    {skill.name}
+                    <div className="flex items-center gap-2">
+                      <SkillIcon name={skill.name} className="w-4 h-4 shrink-0" />
+                      <span>{skill.name}</span>
+                    </div>
                   </td>
                   <td className="p-3 sm:p-4 text-primary">
                     <span className="px-2.5 py-0.5 rounded bg-secondary text-[11px] border border-border">

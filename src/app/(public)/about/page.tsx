@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, GraduationCap, Code2, MapPin, Mail, Download } from 'lucide-react';
+import { SkillIcon } from '@/components/skill-icon';
 import { getProfile } from '@/services/profile-service';
 import { getSkillsGroupedByCategory } from '@/services/skill-service';
 import { getEducations } from '@/services/education-service';
@@ -164,9 +165,10 @@ export default async function AboutPage() {
                   {items.map((skill) => (
                     <span
                       key={skill.id}
-                      className="px-2.5 py-1 rounded text-xs font-mono bg-secondary/80 text-foreground border border-border"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono bg-secondary/80 text-foreground border border-border transition-colors hover:border-primary/50"
                     >
-                      {skill.name}
+                      <SkillIcon name={skill.name} className="w-3.5 h-3.5 shrink-0" />
+                      <span>{skill.name}</span>
                     </span>
                   ))}
                 </div>
