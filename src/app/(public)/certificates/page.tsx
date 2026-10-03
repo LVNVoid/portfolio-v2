@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ExternalLink, Calendar, ArrowRight, ShieldCheck } from 'lucide-react';
 import { getCertificates } from '@/services/certificate-service';
+import { FadeIn, SlideUp } from '@/components/ui/animated';
 
 export const metadata: Metadata = {
   title: 'Certifications — Verified Credentials | Elvien',
@@ -15,25 +16,28 @@ export default async function CertificatesPage() {
   return (
     <div className="space-y-10 max-w-5xl mx-auto">
       {/* Header */}
-      <div className="space-y-3 border-b border-border pb-6">
-        <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-[11px] font-mono tracking-wider uppercase bg-secondary text-primary border border-border">
-          <span>Certificates [03]</span>
+      <FadeIn>
+        <div className="space-y-3 border-b border-border pb-6">
+          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-[11px] font-mono tracking-wider uppercase bg-secondary text-primary border border-border">
+            <span>Certificates [03]</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-serif font-normal text-foreground">
+            Certifications
+          </h1>
+          <p className="text-xs sm:text-sm font-sans text-muted-foreground max-w-2xl leading-relaxed">
+            Professional development certifications and competency completions verified by official issuers.
+          </p>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-serif font-normal text-foreground">
-          Certifications
-        </h1>
-        <p className="text-xs sm:text-sm font-sans text-muted-foreground max-w-2xl leading-relaxed">
-          Professional development certifications and competency completions verified by official issuers.
-        </p>
-      </div>
+      </FadeIn>
 
       {/* Certificates Gallery Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <SlideUp delay={0.08}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {certificates.length > 0 ? (
           certificates.map((cert) => (
             <article
               key={cert.id}
-              className="vitrine-border bg-card rounded-lg p-6 space-y-5 flex flex-col justify-between hover:border-primary/60 transition-colors"
+              className="vitrine-border bg-card rounded-lg p-5 sm:p-6 space-y-5 flex flex-col justify-between hover:border-primary/60 hover:-translate-y-1 hover:shadow-md active:scale-[0.99] transition-all"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between border-b border-border/60 pb-2.5 font-mono text-xs text-muted-foreground">
@@ -87,7 +91,8 @@ export default async function CertificatesPage() {
             Certificates will populate upon database seed.
           </div>
         )}
-      </div>
+        </div>
+      </SlideUp>
     </div>
   );
 }

@@ -17,7 +17,7 @@ export function SpecimenCard({ project, featured = false }: SpecimenCardProps) {
 
   return (
     <article
-      className={`group vitrine-border bg-card rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/60 flex flex-col justify-between ${
+      className={`group vitrine-border bg-card rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/60 hover:-translate-y-1 hover:shadow-md active:scale-[0.99] flex flex-col justify-between ${
         featured ? 'md:col-span-2' : ''
       }`}
     >

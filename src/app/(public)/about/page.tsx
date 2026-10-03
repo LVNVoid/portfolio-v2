@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, GraduationCap, Code2, MapPin, Mail, Download } from 'lucide-react';
 import { SkillIcon } from '@/components/skill-icon';
+import { FadeIn, SlideUp } from '@/components/ui/animated';
 import { getProfile } from '@/services/profile-service';
 import { getSkillsGroupedByCategory } from '@/services/skill-service';
 import { getEducations } from '@/services/education-service';
@@ -26,23 +27,26 @@ export default async function AboutPage() {
   return (
     <div className="space-y-12 max-w-4xl mx-auto">
       {/* Header */}
-      <div className="space-y-3 border-b border-border pb-6">
-        <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-[11px] font-mono tracking-wider uppercase bg-secondary text-primary border border-border">
-          <span>About Me [02]</span>
+      <FadeIn>
+        <div className="space-y-3 border-b border-border pb-6">
+          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-[11px] font-mono tracking-wider uppercase bg-secondary text-primary border border-border">
+            <span>About Me [02]</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-foreground">
+            About Me
+          </h1>
+          <p className="text-xs sm:text-sm font-sans text-muted-foreground leading-relaxed">
+            My background, engineering philosophy, and educational credentials.
+          </p>
         </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-foreground">
-          About Me
-        </h1>
-        <p className="text-xs sm:text-sm font-sans text-muted-foreground leading-relaxed">
-          My background, engineering philosophy, and educational credentials.
-        </p>
-      </div>
+      </FadeIn>
 
       {/* Main Profile Card */}
-      <div className="vitrine-border bg-card rounded-xl p-5 sm:p-8 lg:p-10 space-y-8 relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-primary" />
+      <SlideUp delay={0.05}>
+        <div className="vitrine-border bg-card rounded-xl p-5 sm:p-8 lg:p-10 space-y-8 relative overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-1.5 bg-primary" />
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Avatar Profile Plate */}
           <div className="md:col-span-4 lg:col-span-3 flex flex-row md:flex-col gap-3.5 sm:gap-5 md:gap-4 items-center md:items-start">
             <div className="relative aspect-square w-20 h-20 sm:w-24 sm:h-24 md:w-full md:h-auto md:max-w-[200px] rounded-lg border border-border bg-secondary/30 overflow-hidden pin-tilted shadow-md shrink-0">
@@ -122,7 +126,7 @@ export default async function AboutPage() {
               <a
                 href="/cv.pdf"
                 target="_blank"
-                className="px-4 py-2.5 min-h-[44px] rounded border border-border bg-secondary/50 text-foreground uppercase tracking-wider hover:bg-secondary transition-colors inline-flex items-center gap-2"
+                className="px-4 py-2.5 min-h-[44px] rounded border border-border bg-secondary/50 text-foreground uppercase tracking-wider hover:bg-secondary transition-colors inline-flex items-center gap-2 active:scale-95"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download CV (PDF)</span>
@@ -131,9 +135,11 @@ export default async function AboutPage() {
           </div>
         </div>
       </div>
+    </SlideUp>
 
       {/* Skills Section */}
-      <section aria-label="Technical Skills" className="space-y-6">
+      <SlideUp delay={0.1}>
+        <section aria-label="Technical Skills" className="space-y-6">
         <div className="flex items-center justify-between border-b border-border pb-3">
           <div className="space-y-1">
             <span className="text-[10px] font-mono tracking-wider uppercase text-primary font-bold">
@@ -151,7 +157,7 @@ export default async function AboutPage() {
             Object.entries(groupedSkills).map(([category, items]) => (
               <div
                 key={category}
-                className="vitrine-border bg-card p-5 rounded-lg space-y-3"
+                className="vitrine-border bg-card p-5 rounded-lg space-y-3 hover:border-primary/40 transition-colors"
               >
                 <div className="border-b border-border/60 pb-2 flex items-center justify-between">
                   <h3 className="font-mono text-xs uppercase tracking-wider text-primary font-bold">
@@ -181,9 +187,11 @@ export default async function AboutPage() {
           )}
         </div>
       </section>
+    </SlideUp>
 
       {/* Education Section */}
-      <section aria-label="Education" className="space-y-6">
+      <SlideUp delay={0.15}>
+        <section aria-label="Education" className="space-y-6">
         <div className="flex items-center justify-between border-b border-border pb-3">
           <div className="space-y-1">
             <span className="text-[10px] font-mono tracking-wider uppercase text-primary font-bold">
@@ -201,7 +209,7 @@ export default async function AboutPage() {
             educations.map((edu) => (
               <div
                 key={edu.id}
-                className="vitrine-border bg-card p-6 rounded-lg space-y-2"
+                className="vitrine-border bg-card p-6 rounded-lg space-y-2 hover:border-primary/40 transition-colors"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-border/60 pb-2">
                   <h3 className="font-serif text-lg text-foreground font-normal">
@@ -228,6 +236,7 @@ export default async function AboutPage() {
           )}
         </div>
       </section>
+    </SlideUp>
     </div>
   );
 }

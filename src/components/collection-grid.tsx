@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import type { Project } from '@/schemas/project-schema';
 import { SpecimenCard } from '@/components/specimen-card';
 import { TaxonomyFilter } from '@/components/taxonomy-filter';
@@ -33,17 +34,36 @@ export function CollectionGrid({ initialProjects }: CollectionGridProps) {
         onSelectCategory={setSelectedCategory}
       />
 
-      {filteredProjects.length === 0 ? (
-        <div className="p-12 text-center rounded border border-dashed border-border text-muted-foreground font-mono text-xs">
-          No specimens matching current taxonomy classification.
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredProjects.map((project) => (
-            <SpecimenCard key={project.id} project={project} />
-          ))}
-        </div>
-      )}
+      <AnimatePresence mode="popLayout">
+        {filteredProjects.length === 0 ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="p-12 text-center rounded border border-dashed border-border text-muted-foreground font-mono text-xs"
+          >
+            No specimens matching current taxonomy classification.
+          </motion.div>
+        ) : (
+          <motion.div
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
+          >
+            {filteredProjects.map((project) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <SpecimenCard project={project} />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
