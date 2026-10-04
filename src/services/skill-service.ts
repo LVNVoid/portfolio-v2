@@ -23,8 +23,8 @@ export const STATIC_SKILLS: Skill[] = [
 
   // Database & Storage
   { id: 'sk-pg', name: 'PostgreSQL (Neon)', category: 'Database & Cloud' },
+  { id: 'sk-neon-storage', name: 'Neon Object Storage', category: 'Database & Cloud' },
   { id: 'sk-mssql', name: 'Microsoft SQL Server', category: 'Database & Cloud' },
-  { id: 'sk-cloudinary', name: 'Cloudinary Media API', category: 'Database & Cloud' },
 
   // DevOps & Tools
   { id: 'sk-docker', name: 'Docker & Containers', category: 'DevOps & Tooling' },

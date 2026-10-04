@@ -13,7 +13,6 @@ import {
   SiPrisma,
   SiZod,
   SiPostgresql,
-  SiCloudinary,
   SiDocker,
   SiUbuntu,
   SiGit,
@@ -72,9 +71,9 @@ export function SkillIcon({ name, className = 'w-3.5 h-3.5 shrink-0' }: SkillIco
 
   // Databases & Cloud
   if (n.includes('neon')) return <SiNeon className={`${className} text-[#00E599]`} />;
+  if (n.includes('object storage')) return <SiNeon className={`${className} text-[#00E599]`} />;
   if (n.includes('postgresql')) return <SiPostgresql className={`${className} text-[#4169E1]`} />;
   if (n.includes('sql server') || n.includes('mssql') || n === 'sql') return <Database className={`${className} text-primary`} />;
-  if (n.includes('cloudinary')) return <SiCloudinary className={`${className} text-[#3448C5]`} />;
 
   // DevOps & Tools
   if (n.includes('docker')) return <SiDocker className={`${className} text-[#2496ED]`} />;

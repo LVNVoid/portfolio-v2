@@ -10,6 +10,7 @@ import {
   type Project,
 } from '@/schemas/project-schema';
 import { createProjectAction, updateProjectAction } from '@/actions/project-actions';
+import { StorageUpload } from '@/components/storage-upload';
 import { Save, ArrowLeft, Loader2, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 
@@ -26,6 +27,7 @@ export function AdminProjectForm({ initialProject }: AdminProjectFormProps) {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(createProjectSchema),
@@ -47,6 +49,7 @@ export function AdminProjectForm({ initialProject }: AdminProjectFormProps) {
     },
   });
 
+  const [imageUrl, setImageUrl] = React.useState(initialProject?.image || '');
   const [techString, setTechString] = React.useState(
     initialProject?.tech.join(', ') || 'Next.js, TypeScript, Tailwind CSS'
   );
@@ -61,6 +64,7 @@ export function AdminProjectForm({ initialProject }: AdminProjectFormProps) {
 
     const payload: CreateProjectPayload = {
       ...data,
+      image: imageUrl || undefined,
       tech: techArray.length > 0 ? techArray : ['General'],
     };
 
@@ -242,11 +246,13 @@ export function AdminProjectForm({ initialProject }: AdminProjectFormProps) {
 
         <div className="space-y-1.5">
           <label className="block text-xs uppercase font-mono text-muted-foreground">
-            Specimen Display Image (Cloudinary or Absolute URL)
+            Specimen Display Image
           </label>
-          <input
-            {...register('image')}
-            placeholder="https://res.cloudinary.com/... or /projects/pos.png"
+          <StorageUpload
+            value={imageUrl ?? ''}
+            onChange={(url) => { setImageUrl(url); setValue('image', url); }}
+            folder="projects"
+            placeholder="Upload or paste image URL..."
             className="w-full h-11 min-h-[44px] px-3.5 rounded border border-border bg-background text-foreground text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary font-mono text-xs"
           />
         </div>

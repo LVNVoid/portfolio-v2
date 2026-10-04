@@ -9,7 +9,7 @@ export const STATIC_CERTIFICATES: Certificate[] = [
     issuer: 'Dicoding Indonesia',
     date: new Date('2025-11-20'),
     credentialUrl: 'https://www.dicoding.com/certificates/QLZ9RE069P5D',
-    image: 'https://res.cloudinary.com/dmvludl4w/image/upload/v1766388995/certificates/wtikmukcnkagx1fspvff.jpg',
+    image: 'https://br-rapid-block-b3i6s8r9.storage.c-4.ap-southeast-1.aws.neon.tech/asset/certificates/cert-react.jpg',
   },
   {
     id: 'cert-web-basic',
@@ -18,7 +18,7 @@ export const STATIC_CERTIFICATES: Certificate[] = [
     issuer: 'Dicoding Indonesia',
     date: new Date('2025-11-15'),
     credentialUrl: 'https://www.dicoding.com/certificates/EYX4YK75OZDL',
-    image: 'https://res.cloudinary.com/dmvludl4w/image/upload/v1766389027/certificates/xbijjdsundyj0s08z8re.jpg',
+    image: 'https://br-rapid-block-b3i6s8r9.storage.c-4.ap-southeast-1.aws.neon.tech/asset/certificates/cert-web-basic.jpg',
   },
   {
     id: 'cert-git-github',
@@ -27,7 +27,7 @@ export const STATIC_CERTIFICATES: Certificate[] = [
     issuer: 'Dicoding Indonesia',
     date: new Date('2025-11-10'),
     credentialUrl: 'https://www.dicoding.com/certificates/QLZ94EYLMP5D',
-    image: 'https://res.cloudinary.com/dmvludl4w/image/upload/v1766389009/certificates/kd39nwg5lpihgcoyzdbi.jpg',
+    image: 'https://br-rapid-block-b3i6s8r9.storage.c-4.ap-southeast-1.aws.neon.tech/asset/certificates/cert-git-github.jpg',
   },
   {
     id: 'cert-backend-js',
@@ -36,7 +36,7 @@ export const STATIC_CERTIFICATES: Certificate[] = [
     issuer: 'Dicoding Indonesia',
     date: new Date('2025-11-05'),
     credentialUrl: 'https://www.dicoding.com/certificates/53XEO5V0YZRN',
-    image: 'https://res.cloudinary.com/dmvludl4w/image/upload/v1766388168/certificates/qo19uav06croly8dto2x.jpg',
+    image: 'https://br-rapid-block-b3i6s8r9.storage.c-4.ap-southeast-1.aws.neon.tech/asset/certificates/cert-backend-js.jpg',
   },
   {
     id: 'cert-js-basic',
@@ -45,7 +45,7 @@ export const STATIC_CERTIFICATES: Certificate[] = [
     issuer: 'Dicoding Indonesia',
     date: new Date('2025-10-28'),
     credentialUrl: 'https://www.dicoding.com/certificates/JMZV1OG7RXN9',
-    image: 'https://res.cloudinary.com/dmvludl4w/image/upload/v1766389086/certificates/iyymmt7zgdcliqddwrty.jpg',
+    image: 'https://br-rapid-block-b3i6s8r9.storage.c-4.ap-southeast-1.aws.neon.tech/asset/certificates/cert-js-basic.jpg',
   },
 ];
 

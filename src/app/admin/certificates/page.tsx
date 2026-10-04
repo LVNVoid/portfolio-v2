@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Plus, Trash2, Award, ExternalLink } from 'lucide-react';
 import db from '@/services/db';
 import { deleteCertificateAction, createCertificateAction } from '@/actions/certificate-actions';
+import { StorageUpload } from '@/components/storage-upload';
 
 export const metadata: Metadata = {
   title: 'Manage Certificates — The Specimen Cabinet',
@@ -101,12 +102,8 @@ export default async function AdminCertificatesPage() {
               />
             </div>
             <div className="space-y-1">
-              <label className="text-muted-foreground uppercase text-[10px]">Image Asset URL</label>
-              <input
-                name="image"
-                placeholder="https://res.cloudinary.com/..."
-                className="w-full h-11 min-h-[44px] px-3 rounded border border-border bg-background text-foreground text-sm"
-              />
+              <label className="text-muted-foreground uppercase text-[10px]">Image Asset</label>
+              <StorageUpload name="image" folder="certificates" placeholder="Upload or paste image URL..." />
             </div>
           </div>
 

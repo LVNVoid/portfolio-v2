@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Save, User } from 'lucide-react';
 import db from '@/services/db';
 import { updateProfileAction } from '@/actions/profile-actions';
+import { StorageUpload } from '@/components/storage-upload';
 
 export const metadata: Metadata = {
   title: 'Curator Profile — The Specimen Cabinet',
@@ -111,13 +112,8 @@ export default async function AdminProfilePage() {
           </div>
 
           <div className="space-y-1">
-            <label className="text-muted-foreground uppercase text-[10px]">Avatar Media URL</label>
-            <input
-              name="avatar"
-              defaultValue={profile?.avatar || ''}
-              placeholder="https://res.cloudinary.com/..."
-              className="w-full h-11 min-h-[44px] px-3.5 rounded border border-border bg-background text-foreground text-sm"
-            />
+            <label className="text-muted-foreground uppercase text-[10px]">Avatar Media</label>
+            <StorageUpload name="avatar" defaultValue={profile?.avatar || ''} folder="profile" placeholder="Upload or paste image URL..." />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">

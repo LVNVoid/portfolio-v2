@@ -11,7 +11,7 @@ export default function PublicLayout({
     <div className="min-h-screen flex flex-col justify-between bg-background text-foreground transition-colors duration-200">
       <ScrollProgress />
       <Navbar />
-      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+      <main id="main-content" className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {children}
       </main>
       <Footer />
