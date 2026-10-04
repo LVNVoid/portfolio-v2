@@ -48,7 +48,7 @@ export default async function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Avatar Profile Plate */}
-          <div className="md:col-span-4 lg:col-span-3 flex flex-row md:flex-col gap-3.5 sm:gap-5 md:gap-4 items-center md:items-start">
+          <div className="md:col-span-5 lg:col-span-4 flex flex-row md:flex-col gap-3.5 sm:gap-5 md:gap-4 items-center md:items-start">
             <div className="relative aspect-square w-20 h-20 sm:w-24 sm:h-24 md:w-full md:h-auto md:max-w-[200px] rounded-lg border border-border bg-secondary/30 overflow-hidden pin-tilted shadow-md shrink-0">
               {profile?.avatar ? (
                 <Image
@@ -66,7 +66,7 @@ export default async function AboutPage() {
               )}
             </div>
 
-            <div className="space-y-1 sm:space-y-1.5 font-mono text-xs min-w-0 flex-1">
+            <div className="space-y-1 sm:space-y-1.5 font-mono text-xs min-w-0 flex-1 md:w-full">
               <div className="text-foreground font-semibold text-sm sm:text-base leading-tight">
                 {profile?.name || 'Elvien Aninditha Purnawan'}
               </div>
@@ -90,7 +90,7 @@ export default async function AboutPage() {
           </div>
 
           {/* Narrative Content */}
-          <div className="md:col-span-8 lg:col-span-9 space-y-6">
+          <div className="md:col-span-7 lg:col-span-8 space-y-6">
             <div className="space-y-3">
               <span className="text-[10px] font-mono uppercase tracking-wider text-primary font-bold">
                 Background & Focus
